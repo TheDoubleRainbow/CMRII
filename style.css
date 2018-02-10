@@ -1,0 +1,10 @@
+.alternatives-list-el{
+	margin-right: 10px;
+}
+.alternative{
+	display: inline-block;
+	margin-right: 10px
+}
+body{
+	text-align: center;
+}

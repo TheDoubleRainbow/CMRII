@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CMRII</title>
+	<script type="text/javascript" defer src="lib/vue.js"></script>
+	<script type="text/javascript" defer src="app.js"></script>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="app">
+		<div class="alternatives-list">
+			<span v-for="alt in alternatives" class="alternatives-list-el">{{alt}}</span>
+		</div>
+		<div class="compare">
+			<div class="comparebox">
+				<div class="alternative" v-for="alt in currentCompare">{{alt.name}}</div>
+			</div>
+			<div class="slider">
+				 <input type="range" min="0" max="10" v-model="currentRange" class="slider" id="compareValue">
+			</div>
+			<button @click="answer" class="btn-success btn">Answer</button>
+		</div>
+	</div>
+</body>
+</html>
