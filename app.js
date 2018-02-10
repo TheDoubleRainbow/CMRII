@@ -19,7 +19,15 @@ var app = new Vue({
 			}
 		},
 		answer: function(){
-			alert("answer")
+			let values = [10-this.currentRange, this.currentRange*1];
+			for(let i = 0; i < this.alternatives.length; i++){
+				if(this.alternatives[i].name == this.currentCompare[0].name){
+					this.alternatives[i].rate += values[0]
+				}
+				else if(this.alternatives[i].name == this.currentCompare[1].name){
+					this.alternatives[i].rate += values[1]
+				}
+			}
 		}
 	},
 	created: function(){
