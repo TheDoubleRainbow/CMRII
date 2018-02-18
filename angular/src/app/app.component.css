@@ -2,6 +2,9 @@
 	border-right: 1px solid #222;
 	padding: 0px 10px 0px 10px;
 }
+.alternatives-list{
+	text-align: center;
+}
 .alternative{
 	display: inline-block;
 	margin-right: 10px;
@@ -36,6 +39,10 @@
 	margin-top: 20px;
 	padding-top: 10px;
 	padding-bottom: 20px;
+	text-align: center;
+}
+.comparebox{
+	text-align: center;
 }
 .slider{
 	width: 400px;
@@ -48,6 +55,7 @@
 	width: 600px;
 	right: 0;
 	left: 0;
+	text-align: center;
 	margin-right: auto;
     margin-left: auto;
 	background: white;
@@ -62,19 +70,23 @@
 	padding: none;
 }
 .alt-input-list-el{
+	margin: auto;
 	margin-top: 10px;
 }
 .ready{
 	width: 400px;
 	margin: 20px;
 }
+.answerbtn{
+	margin: 0 auto;
+}
 #new-alternative{
-	width: 500px;
+	width: 480px;
 	display: inline-block;
 }
 #add-alternative{
 	display: inline-block;
-	width: 70px;
+	width: 90px;
 	position: relative;
 	top: -2px;
 }

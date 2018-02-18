@@ -4,22 +4,40 @@
 	<title>CMRII</title>
 	<script type="text/javascript" defer src="lib/vue.js"></script>
 	<script type="text/javascript" defer src="app.js"></script>
+	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<div id="app">
-		<div class="alternatives-list">
-			<span v-for="alt in alternatives" class="alternatives-list-el">{{alt}}</span>
+		<div class="alternatives-input" v-if="!ready">
+			<div class="alternatives-input-title">Add your alternatives</div>
+			<input type="text" class="form-control" v-model="newAlternative" id="new-alternative" name="">
+			<button @click="addAlternative" class="btn btn-success" id="add-alternative">Add</button>
+			<div class="alt-input-list-el" v-for="alt in alternatives">{{alt.name}}</div>
+			<button @click="getReady" v-if="alternatives.length > 1" class="btn btn-success ready">Ready</button>
 		</div>
-		<div class="compare">
+		<div v-if="ready" class="alternatives-list">
+			<div class="alt-title">Alternatives</div>
+			<span v-for="alt in alternatives" class="alternatives-list-el">{{alt.name}} </span>
+		</div>
+		<div v-if="ready" class="compare">
+			<div class="compare-title">Compare</div>
+			<hr />
 			<div class="comparebox">
 				<div class="alternative" v-for="alt in currentCompare">{{alt.name}}</div>
+				<div class="alternative-num">{{10-currentRange}}</div>
+				<div class="alternative-num">{{currentRange}}</div>
 			</div>
 			<div class="slider">
 				 <input type="range" min="0" max="10" v-model="currentRange" class="slider" id="compareValue">
 			</div>
 			<button @click="answer" class="btn-success btn">Answer</button>
+		</div>
+		<div v-if="resultList.length!=0" class="result">
+			<div class="result-title">Result</div>
+			<hr />
+			<div class="result-el" v-for="el in resultList">{{el.name}} {{el.rate}}</div>
 		</div>
 	</div>
 </body>

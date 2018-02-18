@@ -1,0 +1,30 @@
+<div class="alternatives-input" *ngIf="!ready">
+  <div class="alternatives-input-title">{{locale.inputTitle}}</div>
+  <input type="text" class="form-control" [(ngModel)]="newAlternative" id="new-alternative" name="">
+  <button (click)="addAlternative()" class="btn btn-success" id="add-alternative">{{locale.add}}</button>
+  <div class="alt-input-list-el" *ngFor="let alt of alternatives">{{alt.name}}</div>
+  <button (click)="getReady()" *ngIf="alternatives.length > 1" class="btn btn-success ready">{{locale.ready}}</button>
+  <div class="lang-select">{{locale.lang}}: <span (click)="locale=locales.ua">Українська, </span><span (click)="locale=locales.ru">Русский, </span><span (click)="locale=locales.en">English</span></div>
+</div>
+<div *ngIf="ready" class="alternatives-list">
+  <div class="alt-title">{{locale.alts}}</div>
+  <span *ngFor="let alt of alternatives" class="alternatives-list-el">{{alt.name}} </span>
+</div>
+<div *ngIf="ready && !outOfAlternatives" class="compare">
+  <div class="compare-title">{{locale.compare}}</div>
+  <hr />
+  <div class="comparebox">
+    <div class="alternative" *ngFor="let alt of currentCompare">{{alt.name}}</div>
+    <div class="alternative-num">{{10-currentRange}}</div>
+    <div class="alternative-num">{{currentRange}}</div>
+  </div>
+  <div class="slider">
+    <input type="range" min="0" max="10" [(ngModel)]="currentRange" class="slider" id="compareValue">
+  </div>
+  <button (click)="answer()" class="btn-success btn answerbtn">{{locale.answer}}</button>
+</div>
+<div *ngIf="resultList.length!=0" class="result">
+  <div class="result-title">{{locale.result}}</div>
+  <hr />
+  <div class="result-el" *ngFor="let el of resultList">{{el.name}} {{el.rate}}</div>
+</div>
